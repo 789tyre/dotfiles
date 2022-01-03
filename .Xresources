@@ -1,0 +1,6 @@
+xterm*background: black
+xterm*foreground: grey
+xterm*faceName: "Source Code Pro"
+xterm*faceSize: 9.33
+xterm*renderFont: true
+xterm*font: *-fixed-*-*-*-14-*
