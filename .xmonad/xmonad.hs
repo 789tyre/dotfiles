@@ -212,6 +212,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Increase brightness with mod + F6
     , ((modm,               xK_F6   ), spawn ("light -A " ++ brightnessStep))
+
+    -- Bring up notes file
+    , ((modm,               xK_n    ), spawn ("st -g 133x33+510+280 -t Notes -e $HOME/Documents/notes/notetaker"))
+
     ]
 
 
@@ -252,6 +256,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , title     =? "Notes"          --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
