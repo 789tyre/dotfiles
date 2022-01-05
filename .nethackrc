@@ -1,0 +1,119 @@
+OPTIONS=name:Gavin
+OPTIONS=hilite_pet
+OPTIONS=pettype:cat, catname:Clanthony
+OPTIONS=showexp, time, color
+OPTIONS=!bones
+
+# Only pickup money
+OPTIONS=autopickup
+OPTIONS=pickup_type:$
+# Pickup things named "ammo"
+AUTOPICKUP_EXCEPTION:"<.* named ammo"
+
+SYMBOLS=S_corr:#
+SYMBOLS=S_boulder:0
+
+OPTIONS=windowtype:curses
+# OPTIONS=perm_invent
+
+OPTIONS=statushilites
+
+# Items in use
+MENUCOLOR="\(weapon in .*\)"=gray&underline
+MENUCOLOR="\(wielded.*\)"=gray&underline
+MENUCOLOR="\(alternate weapon\)"=gray&underline
+MENUCOLOR="\(in quiver\)"=gray&underline
+MENUCOLOR="\(at the ready\)"=gray&underline
+MENUCOLOR="\(being worn\)"=gray&underline
+MENUCOLOR="\(embedded in your skin\)"=gray&underline
+MENUCOLOR="\(on left .*\)"=gray&underline
+MENUCOLOR="\(on right .*\)"=gray&underline
+MENUCOLOR="\(in use\)"=gray&underline
+MENUCOLOR="tethered"=gray&underline
+
+# Blessed items in use
+MENUCOLOR="blessed .* \(weapon in .*\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(wielded.*\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(alternate weapon\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(in quiver\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(at the ready\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(being worn\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(embedded in your skin\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(on left .*\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(on right .*\)"=lightgreen&underline
+MENUCOLOR="blessed .* \(in use\)"=lightgreen&underline
+MENUCOLOR="blessed .* tethered"=lightgreen&underline
+
+# Cursed items in use
+MENUCOLOR=" cursed .* \(weapon in .*\)"=orange&underline
+MENUCOLOR=" cursed .* \(wielded.*\)"=orange&underline
+MENUCOLOR=" cursed .* \(alternate weapon\)"=orange&underline
+MENUCOLOR=" cursed .* \(in quiver\)"=orange&underline
+MENUCOLOR=" cursed .* \(at the ready\)"=orange&underline
+MENUCOLOR=" cursed .* \(being worn\)"=orange&underline
+MENUCOLOR=" cursed .* \(embedded in your skin\)"=orange&underline
+MENUCOLOR=" cursed .* \(on left .*\)"=orange&underline
+MENUCOLOR=" cursed .* \(on right .*\)"=orange&underline
+MENUCOLOR=" cursed .* \(in use\)"=orange&underline
+MENUCOLOR=" cursed .* tethered"=orange&underline
+
+# HP
+OPTIONS=hitpointbar
+OPTIONS=hilite_status:hitpoints/100%/green&normal
+OPTIONS=hilite_status:hitpoints/<100%/lightgreen&normal
+OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
+OPTIONS=hilite_status:hitpoints/<50%/orange&normal
+OPTIONS=hilite_status:hitpoints/<33%/red&normal
+OPTIONS=hilite_status:hitpoints/<15%/red&inverse
+
+# Pw
+OPTIONS=hilite_status:power/100%/gray&normal
+OPTIONS=hilite_status:power/<100%/green&normal
+OPTIONS=hilite_status:power/<66%/yellow&normal
+OPTIONS=hilite_status:power/<50%/orange&normal
+OPTIONS=hilite_status:power/<33%/red&normal
+
+
+# Carry
+OPTION=hilite_status:cap/burdened/yellow/stressed/orange/strained/red&bold/overtaxed/red&inverse/overloaded/red&inverse&blink
+
+# Hunger
+OPTIONS=hilite_status:hunger/satiated/yellow/hungry/orange/weak/red&bold/fainting/red&inverse/fainted/red&inverse&blink
+
+# Mental
+OPTIONS=hilite_status:condition/hallu/yellow
+OPTIONS=hilite_status:condition/conf/orange
+OPTIONS=hilite_status:condition/stun/red&bold
+
+# Status Effects
+OPTIONS=hilite_status:condition/termill/red&inverse
+OPTIONS=hilite_status:condition/foodpois/red&inverse
+OPTIONS=hilite_status:condition/slime/red&inverse
+
+# Gold
+OPTIONS=hilite_status:gold/up/yellow/down/brown
+
+# Characteristics
+OPTIONS=menucolors
+MENUCOLOR=" blessed " = green
+MENUCOLOR=" holy " = green
+MENUCOLOR=" cursed " = red
+MENUCOLOR=" unholy " = red
+MENUCOLOR=" cursed .* (being worn)" = orange&underline
+
+# Messages to hide
+MSGTYPE=hide "You swap places with .*"
+
+# Here are some classes to quick start the game
+CHOOSE=rogue
+[knight]
+OPTIONS=role:knight, race:*, align:*, gender:*
+[rogue]
+OPTIONS=role:rogue, race:human, align:*, gender:*
+[ranger]
+OPTIONS=role:ranger, race:*, align:*, gender:*
+[valkyrie]
+OPTIONS=role:valkyrie, race:dwarf, align:l, gender:*
+[wild]
+OPTIONS=role:*, race:*, align:*, gender:*
+[free]
