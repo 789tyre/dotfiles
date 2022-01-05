@@ -16,6 +16,18 @@
 ;
 ;==========================================================
 
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+; pseudo-transparency = false
+
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #222
@@ -26,6 +38,8 @@ foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+
+
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -85,9 +99,9 @@ height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = false
+fixed-center = true
 bottom = false
-separator = 
+separator =   
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -100,6 +114,7 @@ override-redirect = true
 border-size = 0
 border-color = #000000
 
+
 module-margin-left = 0
 module-margin-right = 0
 
@@ -108,7 +123,8 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = battery cpu memory
-modules-right = pulseaudio xkeyboard date powermenu
+modules-center = date
+modules-right = pulseaudio xkeyboard powermenu
 
 
 
@@ -293,13 +309,13 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
-date =
-date-alt = " %Y-%m-%d"
+date = " %Y-%m-%d"
+date-alt = " %d-%m-%y"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %H:%M:%S
+time-alt = %H:%M
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -443,16 +459,5 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
 
 ; vim:ft=dosini
