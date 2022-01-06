@@ -12,6 +12,7 @@ Plug 'brooth/far.vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
+Plug 'jbyuki/venn.nvim'
 " Plug 'nvie/vim-flake8'
 " Plug 'kana/vim-textobj-user'
 " Plug 'kana/vim-textobj-entire'
@@ -193,31 +194,55 @@ function! WinMove(key)
   endif
 endfunction
 
+lua << EOF
+function _G.ToggleVenn()
+    local venn_enabled = vim.inspect(vim.b.venn_enabled)
+    if venn_enabled == "nil" then
+	vim.b.venn_enabled = true
+	vim.cmd[[setlocal ve=all]]
+
+	-- draw a line with HJKL
+	vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, "n", "J", "<C-v>j:VBox<CR>", {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, "n", "K", "<C-v>k:VBox<CR>", {noremap = true})
+	vim.api.nvim_buf_set_keymap(0, "n", "L", "<C-v>l:VBox<CR>", {noremap = true})
+
+	-- Draw a box with f
+	vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
+    else
+	vim.cmd[[setlocal ve=]]
+	vim.cmd[[mapclear <buffer>]]
+	vim.b.venn_enabled = nil
+    end
+end
+EOF
+    
+
 " Press F2 to write
-nnoremap <F2> <ESC>:w<return>
+nnoremap <F2> <ESC>:w<CR>
 
 " Press F3 to exit without writing
-nnoremap <F3> <ESC>:q<return>
+nnoremap <F3> <ESC>:q<CR>
 
 " Press F4 to write and quit
 " nnoremap <F4> <ESC>ZZ
 
 " F5 to toggle spell check
-nnoremap <F5> <ESC>:call ToggleSpell()<return>
+nnoremap <F5> <ESC>:call ToggleSpell()<CR>
 
 " F6 to toggle red line at col 80
-nnoremap <F6> <ESC>:call ToggleRedLine()<return>
+nnoremap <F6> <ESC>:call ToggleRedLine()<CR>
 
 " Ctrl + F6 to highlight trailing whitespace
-nnoremap <C-F6> <ESC>/\s\+$/<return>
+nnoremap <C-F6> <ESC>/\s\+$/<CR>
 
 " Ctrl + F8 and Ctrl + F7 to navigate tabs
-nnoremap <F7> <ESC>:tabp<return>
-nnoremap <F8> <ESC>:tabn<return>
+nnoremap <F7> <ESC>:tabp<CR>
+nnoremap <F8> <ESC>:tabn<CR>
 
 " Press F10 to toggle relative numbers and Ctrl + F6 to turn them off entirely
-nnoremap <F10> <ESC>:call ToggleNumber()<return>
-nnoremap <C-F10> <ESC>:call TurnOffNumbers()<return>
+nnoremap <F10> <ESC>:call ToggleNumber()<CR>
+nnoremap <C-F10> <ESC>:call TurnOffNumbers()<CR>
 
 " C-[hjkl] moves and/or splits the buffer
 nnoremap <silent> <C-h> :call WinMove('h')<CR>
@@ -225,11 +250,14 @@ nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
+" <leader> [hjkl] resizes the current buffer
 nnoremap <leader>h :vertical resize -2<CR>
 nnoremap <leader>j :resize -2<CR>
 nnoremap <leader>k :resize +2<CR>
 nnoremap <leader>l :vertical resize +2<CR>
 
+" <leader>v toggles Venn mode
+nnoremap <leader>v :lua ToggleVenn()<CR>
 
 " --- Macros ---
 let @u = 'i̲' " Underlining a character
