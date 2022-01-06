@@ -6,20 +6,22 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'brooth/far.vim'
 Plug 'chrisbra/unicode.vim'
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'jbyuki/venn.nvim'
-" Plug 'nvie/vim-flake8'
-" Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-entire'
-" Plug 'xolox/vim-misc'
-" Plug 'xuhdev/vim-latex-live-preview'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
+
+" ---  Fuzzy finding ---
+set path+=**
+set wildmode=longest,list,full
+set wildmenu
+set wildignore+=*.pyc
 
 " --- Editing a file ---
 set encoding=utf-8
@@ -258,6 +260,10 @@ nnoremap <leader>l :vertical resize +2<CR>
 
 " <leader>v toggles Venn mode
 nnoremap <leader>v :lua ToggleVenn()<CR>
+
+" Telescope keymaps
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fb <cmd>Telescope buffers <CR>
 
 " --- Macros ---
 let @u = 'i̲' " Underlining a character
