@@ -105,7 +105,7 @@ hi ErrorMsg     ctermfg = white  ctermbg = red
 hi Error        ctermfg = white  ctermbg = 124
 hi Todo         ctermfg = black  ctermbg = 76
 " hi Normal       ctermfg = 15     ctermbg = 234
-hi Normal       ctermfg = 15
+hi Normal       ctermfg = 07
 hi Search       ctermfg = 22     ctermbg = 117
 hi Statement    ctermfg = 75
 
