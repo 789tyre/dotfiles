@@ -4,6 +4,7 @@ call plug#begin()
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'chrisbra/unicode.vim'
@@ -41,6 +42,8 @@ set expandtab
 set autoindent
 set mousehide
 set vb
+
+let mapleader = ' '
 
 function! Readonly()
     if &readonly || !&modifiable
@@ -304,6 +307,9 @@ nnoremap <leader>v :lua ToggleVenn()<CR>
 " Telescope keymaps
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fb <cmd>Telescope buffers <CR>
+
+" Fugitive keymaps
+nnoremap <leader>gs :G<CR>
 
 " --- Macros ---
 let @u = 'i̲' " Underlining a character
