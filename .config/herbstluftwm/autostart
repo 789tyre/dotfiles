@@ -12,6 +12,7 @@ hc emit_hook reload
 xsetroot -solid '#5A8E3A'
 nitrogen --restore &
 compton &
+alsaunmute
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -24,6 +25,7 @@ Editor="nvim"
 resizeStep=0.02
 volumeStep=2
 brightnessStep=5
+gapStep=2
 
 # --- Keybindings ---
 hc keybind $Mod-Shift-q quit
@@ -69,6 +71,11 @@ hc keybind $Mod-Control-h       resize left +$resizeStep
 hc keybind $Mod-Control-j       resize down +$resizeStep
 hc keybind $Mod-Control-k       resize up +$resizeStep
 hc keybind $Mod-Control-l       resize right +$resizeStep
+
+# Increase or decrease frame gap
+hc keybind $Mod-equal spawn $HOME/.config/herbstluftwm/frameGaps.sh $gapStep
+hc keybind $Mod-minus spawn $HOME/.config/herbstluftwm/frameGaps.sh -$gapStep
+hc keybind $Mod-0 set frame_gap 0
 
 # tags
 tag_names=( {1..9} )
