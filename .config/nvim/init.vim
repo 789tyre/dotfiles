@@ -14,6 +14,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" --- Games ---
+Plug 'theprimeagen/vim-be-good'
+Plug 'seandewar/nvimesweeper'
+Plug 'alec-gibson/nvim-tetris'
 
 call plug#end()
 
