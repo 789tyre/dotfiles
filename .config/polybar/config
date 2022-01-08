@@ -124,7 +124,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = battery cpu memory
 modules-center = date
-modules-right = pulseaudio xkeyboard powermenu
+modules-right = alsa xkeyboard powermenu
 
 
 
