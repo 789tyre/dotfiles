@@ -11,7 +11,7 @@
 ;
 ;   To learn more about how to configure Polybar
 ;   go to https://github.com/polybar/polybar
-;
+
 ;   The README contains a lot of information
 ;
 ;==========================================================
@@ -114,17 +114,16 @@ override-redirect = true
 border-size = 0
 border-color = #000000
 
-
 module-margin-left = 0
-module-margin-right = 0
+module-margin-right = 1
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = battery cpu memory
+modules-left = ewmh
 modules-center = date
-modules-right = alsa xkeyboard powermenu
+modules-right = battery cpu memory alsa xkeyboard powermenu
 
 
 
@@ -458,6 +457,48 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+
+[module/ewmh]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+reverse-scroll = false
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+format = <label-state>
+label-monitor = %name%
+
+label-active = %name%
+; label-active-foreground = #101010
+; label-active-background = #FFFF10
+label-active-underline = ${colors.primary}
+label-active-padding = 2
+
+label-occupied = %name%
+label-occupied-foreground = #FFCCFF
+; label-occupied-background = #FFFFFF
+; label-occupied-underline = ${colors.secondary}
+label-occupied-padding = 1
+
+label-urgent = %name%
+; label-urgent-foreground = #9966FF
+; label-urgent-background = #FFCCFF
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = #ABABAB
+label-empty-padding = 1
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
 
 
 ; vim:ft=dosini
