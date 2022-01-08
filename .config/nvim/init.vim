@@ -110,6 +110,11 @@ require'lspconfig'['clangd'].setup {
 }
 EOF
 
+" --- Telescope config ---
+lua << EOF
+local telescope = require('telescope')
+EOF
+
 
 " --- Color scheme 1 ---
 set background=dark
@@ -307,6 +312,7 @@ nnoremap <leader>v :lua ToggleVenn()<CR>
 " Telescope keymaps
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fb <cmd>Telescope buffers <CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
 
 " Fugitive keymaps
 nnoremap <leader>gs :G<CR>
