@@ -39,6 +39,8 @@ set noshowmode
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set ignorecase
+set smartcase
 set autoindent
 set mousehide
 set vb
