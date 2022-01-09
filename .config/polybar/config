@@ -114,10 +114,10 @@ override-redirect = true
 border-size = 0
 border-color = #000000
 
-module-margin-left = 0
+module-margin-left = 1
 module-margin-right = 1
 
-font-0 = fixed:pixelsize=10;1
+font-0 = "JuliaMono Font:size=10;1"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
@@ -479,7 +479,7 @@ label-active = %name%
 ; label-active-foreground = #101010
 ; label-active-background = #FFFF10
 label-active-underline = ${colors.primary}
-label-active-padding = 2
+label-active-padding = 3
 
 label-occupied = %name%
 label-occupied-foreground = #FFCCFF
