@@ -36,8 +36,16 @@ hc keybind $Mod-m spawn dmenu_run
 hc keybind $Mod-n spawn $Term -g 133x33 -t Notes -e $HOME/Documents/notes/notetaker
 
 # Volume controls
+# Computer volume
 hc keybind $Mod-F2 spawn amixer set Master $volumeStep%- unmute
 hc keybind $Mod-F3 spawn amixer set Master $volumeStep%+ unmute
+# cmus volume
+hc keybind $Mod-Shift-F2 spawn cmus-remote -v -$volumeStep%
+hc keybind $Mod-Shift-F3 spawn cmus-remote -v +$volumeStep%
+hc keybind $Mod-F9  spawn cmus-remote -r
+hc keybind $Mod-F10 spawn cmus-remote -u
+hc keybind $Mod-F11 spawn cmus-remote -s
+hc keybind $Mod-F12 spawn cmus-remote -n
 
 # Brightness controls
 hc keybind $Mod-F5 spawn light -U $brightnessStep
