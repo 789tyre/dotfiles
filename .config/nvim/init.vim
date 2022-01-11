@@ -115,8 +115,16 @@ EOF
 " --- Telescope config ---
 lua << EOF
 local telescope = require('telescope')
+
+function grep_notes()
+  require("telescope.builtin").live_grep({
+    prompt_title = "Search notes",
+    cwd = "~/Documents/notes",
+  })
+end
 EOF
 
+lua require('telescope')
 
 " --- Color scheme 1 ---
 set background=dark
@@ -312,16 +320,15 @@ nnoremap <leader>l :vertical resize +2<CR>
 nnoremap <leader>v :lua ToggleVenn()<CR>
 
 " Telescope keymaps
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fb <cmd>Telescope buffers <CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>tf <cmd>Telescope find_files<CR>
+nnoremap <leader>tb <cmd>Telescope buffers <CR>
+nnoremap <leader>tg <cmd>Telescope live_grep<CR>
+nnoremap <leader>tn :lua grep_notes()<CR>
 
 " Fugitive keymaps
 nnoremap <leader>gs :G<CR>
 
 " --- Macros ---
-let @u = 'i̲' " Underlining a character
-let @e = 'i̅' " Overlining a character
 let @o = 'o{}0k' " Curly brackets on the same column
 let @a = 'A {}0k[4~'   " Curly brackets on different columns
 
@@ -333,7 +340,7 @@ let @a = 'A {}0k[4~'   " Curly brackets on different columns
 "  \/|
 
 " Rulere
-" ---------------
+" _______________
 " | l l l l l l |
 " |_____________|
 
