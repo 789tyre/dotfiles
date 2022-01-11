@@ -284,8 +284,8 @@ nnoremap <F2> <ESC>:w<CR>
 " Press F3 to exit without writing
 nnoremap <F3> <ESC>:q<CR>
 
-" Press F4 to write and quit
-" nnoremap <F4> <ESC>ZZ
+" Type "quit" to quit without saving
+nnoremap <leader>quit <ESC>:q!<CR>
 
 " F5 to toggle spell check
 nnoremap <F5> <ESC>:call ToggleSpell()<CR>
