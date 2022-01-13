@@ -168,6 +168,7 @@ hi Todo         ctermfg = black  ctermbg = 76
 hi Normal       ctermfg = 07
 hi Search       ctermfg = 22     ctermbg = 117
 hi Statement    ctermfg = 75
+hi colorcolumn  ctermfg = white ctermbg = 4
 
 hi User1        ctermfg = 15     ctermbg = 68
 hi User2        ctermfg = 15     ctermbg = 67
