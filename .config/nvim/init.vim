@@ -312,10 +312,10 @@ nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
 " <leader> [hjkl] resizes the current buffer
-nnoremap <leader>h :vertical resize -2<CR>
-nnoremap <leader>j :resize -2<CR>
-nnoremap <leader>k :resize +2<CR>
-nnoremap <leader>l :vertical resize +2<CR>
+nnoremap <leader>sh :vertical resize -2<CR>
+nnoremap <leader>sj :resize -2<CR>
+nnoremap <leader>sk :resize +2<CR>
+nnoremap <leader>sl :vertical resize +2<CR>
 
 " <leader>v toggles Venn mode
 nnoremap <leader>v :lua ToggleVenn()<CR>
