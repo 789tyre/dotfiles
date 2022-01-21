@@ -121,7 +121,7 @@ font-0 = "JuliaMono Font:size=10;1"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = ewmh
+modules-left = ewmh cmus
 modules-center = date
 modules-right = battery cpu memory alsa xkeyboard powermenu
 
@@ -498,6 +498,17 @@ label-empty-padding = 1
 
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+
+[module/cmus]
+type = custom/script
+
+exec = ~/.config/polybar/polycmus/cmus.sh
+exec-if = pgrep -x cmus
+interval = 1
+
+click-left = cmus-remote --pause
+
+label-maxlen = 100
 
 
 
