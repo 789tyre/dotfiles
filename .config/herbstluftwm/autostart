@@ -11,7 +11,7 @@ hc emit_hook reload
 # --- Auto start ---
 xsetroot -solid '#5A8E3A'
 nitrogen --restore &
-compton &
+picom &
 alsaunmute
 
 # remove all existing keybindings
@@ -49,8 +49,8 @@ hc keybind $Mod-F11 spawn cmus-remote -s
 hc keybind $Mod-F12 spawn cmus-remote -n
 
 # Brightness controls
-hc keybind $Mod-F5 spawn light -U $brightnessStep
-hc keybind $Mod-F6 spawn light -A $brightnessStep
+hc keybind $Mod-F5 spawn xbacklight -$brightnessStep%
+hc keybind $Mod-F6 spawn xbacklight +$brightnessStep%
 
 # basic movement in tiling and floating mode
 # focusing clients
