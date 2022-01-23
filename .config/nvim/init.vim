@@ -321,6 +321,10 @@ nnoremap <leader>sl :vertical resize +2<CR>
 " <leader>v toggles Venn mode
 nnoremap <leader>v :lua ToggleVenn()<CR>
 
+" <leader>c[jk] to walk through quickfix list
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprev<CR>
+
 " Telescope keymaps
 nnoremap <leader>tf <cmd>Telescope find_files<CR>
 nnoremap <leader>tb <cmd>Telescope buffers <CR>
@@ -329,6 +333,7 @@ nnoremap <leader>tn :lua grep_notes()<CR>
 
 " Fugitive keymaps
 nnoremap <leader>gs :G<CR>
+nnoremap <leader>gl :GcLog<CR>
 
 " --- Macros ---
 let @o = 'o{}0k' " Curly brackets on the same column
