@@ -122,8 +122,8 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = ewmh cmus
-modules-center = date
-modules-right = battery cpu memory alsa xkeyboard powermenu
+modules-center = date 
+modules-right = timer battery cpu memory alsa xkeyboard powermenu
 
 
 
@@ -502,13 +502,26 @@ format-background = ${colors.background}
 [module/cmus]
 type = custom/script
 
-exec = ~/.config/polybar/polycmus/cmus.sh
+exec = ~/.config/polybar/cmus.sh
 exec-if = pgrep -x cmus
 interval = 1
 
 click-left = cmus-remote --pause
 
 label-maxlen = 100
+
+[module/timer]
+type = custom/script
+
+exec = ~/.config/polybar/polybar-timer.sh tail 'TIMER' 5
+tail = true
+format-underline=#2E2
+
+click-left = ~/.config/polybar/polybar-timer.sh new 60 'Working...' 'Paused' 'notify-send "Session finished"'
+click-middle = ~/.config/polybar/polybar-timer.sh cancel
+click-right = ~/.config/polybar/polybar-timer.sh togglepause
+; scroll-up = ~/.config/polybar/polybar-timer.sh increase 60 || ~/.config/polybar/polybar-timer.sh new 1 'TIMER' 'PAUSED' 'notify-send -u critical "Timer expired."'
+; scroll-down = ~/.config/polybar/polybar-timer.sh increase -60
 
 
 
