@@ -9,7 +9,7 @@ Plug 'nvie/vim-flake8'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-easytags'
 Plug 'chrisbra/unicode.vim'
 Plug 'xuhdev/vim-latex-live-preview'
 
