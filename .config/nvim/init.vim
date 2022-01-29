@@ -97,11 +97,11 @@ cmp.setup({
     ['<tab>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp', max_item_count = 5 },
     { name = 'ultisnips' },
   }, {
     { name = 'buffer' },
-  })
+  }),
 })
 EOF
 
@@ -337,9 +337,8 @@ nnoremap <leader>gs :G<CR>
 nnoremap <leader>gl :GcLog<CR>
 
 " --- Macros ---
-let @o = 'o{}0k' " Curly brackets on the same column
-let @a = 'A {}0k[4~'   " Curly brackets on different columns
-
+let @o = 'o{}0k' " Curly brackets on the same column
+let @a = 'A {}0k'   " Curly brackets on different columns
 
 " Clippy
 "  /\
