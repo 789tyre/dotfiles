@@ -1,0 +1,5 @@
+#!/bin/bash
+
+tint2 &
+picom &
+nitrogen --restore &
