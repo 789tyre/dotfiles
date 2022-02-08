@@ -21,7 +21,7 @@ hc keyunbind --all
 Mod=Mod1    # Use alt as modkey
 Term=st
 Editor="nvim"
-Panel=polybar
+Panel=dzen2
 
 resizeStep=0.02
 volumeStep=2
