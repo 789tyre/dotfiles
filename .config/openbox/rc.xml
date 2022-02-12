@@ -41,7 +41,7 @@
   </placement>
   <theme>
     <name>gorvin-theme</name>
-    <titleLayout>NLIMC</titleLayout>
+    <titleLayout>NLSIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -257,6 +257,14 @@
       <action name="FocusToBottom"/>
       <action name="Unfocus"/>
     </keybind>
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="A-Escape">
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
+    </keybind>
     <keybind key="A-space">
       <action name="ShowMenu">
         <menu>client-menu</menu>
@@ -397,7 +405,7 @@
         <command>amixer set Master 2%+ umute</command>
       </action>
     </keybind>
-    <keybind key="A-F4">
+    <keybind key="S-A-F4">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
