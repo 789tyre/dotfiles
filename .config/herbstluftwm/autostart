@@ -10,6 +10,7 @@ hc emit_hook reload
 
 # --- Auto start ---
 xsetroot -solid '#5A8E3A'
+lxsession &
 nitrogen --restore &
 picom &
 
@@ -130,8 +131,8 @@ hc mousebind $Mod-Button3 resize
 
 # focus
 hc keybind $Mod-backslash   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-Tab         cycle +1
+hc keybind $Mod-Shift-Tab   cycle -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
