@@ -149,6 +149,11 @@ hc set always_show_frame on
 hc set frame_bg_transparent on
 hc set frame_transparent_width 5
 hc set frame_gap 0
+hc set default_frame_layout max
+hc substitute ALGO settings.default_frame_layout \
+    foreach T tags.by-name. \
+        sprintf ATTR '%c.tiling.root.algorithm' T \
+        set_attr ATTR ALGO
 
 hc attr theme.active.color '#008dbc'
 hc attr theme.normal.color '#454545'
