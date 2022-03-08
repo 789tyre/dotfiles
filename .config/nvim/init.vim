@@ -297,7 +297,7 @@ nnoremap <F5> <ESC>:call ToggleSpell()<CR>
 nnoremap <F6> <ESC>:call ToggleRedLine()<CR>
 
 " Ctrl + F6 to highlight trailing whitespace
-nnoremap <C-F6> <ESC>/\s\+$/<CR>
+nnoremap <leader>hi <ESC>/\s\+$/<CR>
 
 " Ctrl + F8 and Ctrl + F7 to navigate tabs
 nnoremap <F7> <ESC>:tabp<CR>
