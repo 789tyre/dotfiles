@@ -38,6 +38,7 @@ set relativenumber
 set noshowmode
 set softtabstop=2
 set shiftwidth=2
+set tabstop=4
 set expandtab
 set ignorecase
 set smartcase
@@ -68,7 +69,7 @@ require'nvim-treesitter.configs'.setup {
 	"haskell"
     },
 
-    highlight = { 
+    highlight = {
 	enable = true,
         disable = {}
     },
@@ -203,7 +204,7 @@ set statusline+=\ %f " Filepath relative to current directory
 set statusline+=%{Readonly()}  " Is this file read only
 set statusline+=%=  "  Everything after this is now on the right side
 set statusline+=%y\ /\  " Adds the file type and a slash
-set statusline+=%{&fileencoding?&fileencoding:&encoding}\ 
+set statusline+=%{&fileencoding?&fileencoding:&encoding}\
 set statusline+=\ %l/%L\:\%c\  " Adds current line over total number of lines with the column number
 set statusline+=\ %p%%\   " Adds the percentage through the document
 
@@ -257,6 +258,15 @@ function! WinMove(key)
   endif
 endfunction
 
+function! ToggleVe()
+  if &ve == 'all'
+    set ve=
+  else
+    set ve=all
+  endif
+endfunction
+
+
 lua << EOF
 function _G.ToggleVenn()
     local venn_enabled = vim.inspect(vim.b.venn_enabled)
@@ -279,7 +289,7 @@ function _G.ToggleVenn()
     end
 end
 EOF
-    
+
 
 " Press F2 to write
 nnoremap <F2> <ESC>:w<CR>
@@ -289,12 +299,6 @@ nnoremap <F3> <ESC>:q<CR>
 
 " Type "quit" to quit without saving
 nnoremap <leader>quit <ESC>:q!<CR>
-
-" F5 to toggle spell check
-nnoremap <F5> <ESC>:call ToggleSpell()<CR>
-
-" F6 to toggle red line at col 80
-nnoremap <F6> <ESC>:call ToggleRedLine()<CR>
 
 " Ctrl + F6 to highlight trailing whitespace
 nnoremap <leader>hi <ESC>/\s\+$/<CR>
@@ -307,6 +311,22 @@ nnoremap <F8> <ESC>:tabn<CR>
 nnoremap <F10> <ESC>:call ToggleNumber()<CR>
 nnoremap <C-F10> <ESC>:call TurnOffNumbers()<CR>
 
+" <leader>ts to toggle spell check
+nnoremap <leader>ts <ESC>:call ToggleSpell()<CR>
+
+" <leader>v toggles Venn mode
+nnoremap <leader>v :lua ToggleVenn()<CR>
+
+" <leader>c[jk] to walk through quickfix list
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprev<CR>
+
+" <leader>tv to toggle ve
+nnoremap <leader>tv :call ToggleVe()<CR>
+
+" <leader>tl to toggle red line at col 80
+nnoremap <leader>tl <ESC>:call ToggleRedLine()<CR>
+
 " C-[hjkl] moves and/or splits the buffer
 nnoremap <silent> <C-h> :call WinMove('h')<CR>
 nnoremap <silent> <C-j> :call WinMove('j')<CR>
@@ -318,13 +338,6 @@ nnoremap <leader>sh :vertical resize -2<CR>
 nnoremap <leader>sj :resize -2<CR>
 nnoremap <leader>sk :resize +2<CR>
 nnoremap <leader>sl :vertical resize +2<CR>
-
-" <leader>v toggles Venn mode
-nnoremap <leader>v :lua ToggleVenn()<CR>
-
-" <leader>c[jk] to walk through quickfix list
-nnoremap <leader>j :cnext<CR>
-nnoremap <leader>k :cprev<CR>
 
 " Telescope keymaps
 nnoremap <leader>tf <cmd>Telescope find_files<CR>
