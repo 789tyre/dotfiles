@@ -13,6 +13,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'jbyuki/venn.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'hrsh7th/nvim-cmp'
@@ -158,29 +160,56 @@ set background=dark
 
 
 " --- Color Scheme 2 ---
-hi Comment      ctermfg = 47
-hi Special      ctermfg = 87
-hi PrePoc       ctermfg = 75
-hi Identifier   ctermfg = 112    cterm = NONE
-hi Constant     ctermfg = 43
-hi ErrorMsg     ctermfg = white  ctermbg = red
-hi Error        ctermfg = white  ctermbg = 124
-hi Todo         ctermfg = black  ctermbg = 76
-" hi Normal       ctermfg = 15     ctermbg = 234
-hi Normal       ctermfg = 07
-hi Search       ctermfg = 22     ctermbg = 117
-hi Statement    ctermfg = 75
-hi colorcolumn  ctermfg = white ctermbg = 4
-hi LineNr       ctermfg = 10
+function! SetColorScheme()
+  hi Comment      ctermfg = 47
+  hi Special      ctermfg = 87
+  hi PrePoc       ctermfg = 75
+  hi Identifier   ctermfg = 112    cterm = NONE
+  hi Constant     ctermfg = 43
+  hi ErrorMsg     ctermfg = white  ctermbg = red
+  hi Error        ctermfg = white  ctermbg = 124
+  hi Todo         ctermfg = black  ctermbg = 76
+  " hi Normal       ctermfg = 15     ctermbg = 234
+  hi Normal       ctermfg = 07
+  hi Search       ctermfg = 22     ctermbg = 117
+  hi Statement    ctermfg = 75
+  hi colorcolumn  ctermfg = white ctermbg = 4
+  hi LineNr       ctermfg = 10
 
-hi User1        ctermfg = 15     ctermbg = 68
-hi User2        ctermfg = 15     ctermbg = 67
-hi Over80col    ctermfg = 22     ctermbg = 38
-hi NrmlClr      ctermfg = 15     ctermbg = 67
-hi InrtClr      ctermfg = 15     ctermbg = 35
-hi ReplClr      ctermfg = 015    ctermbg = 172
-hi VisuClr      ctermfg = 015    ctermbg = 61
+  hi User1        ctermfg = 15     ctermbg = 68
+  hi User2        ctermfg = 15     ctermbg = 67
+  hi Over80col    ctermfg = 22     ctermbg = 38
+  hi NrmlClr      ctermfg = 15     ctermbg = 67
+  hi InrtClr      ctermfg = 15     ctermbg = 35
+  hi ReplClr      ctermfg = 015    ctermbg = 172
+  hi VisuClr      ctermfg = 015    ctermbg = 61
+endfunction
+call SetColorScheme()
 
+" --- Limelight ---
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermbg = 240
+
+" --- Goyo ---
+function! s:goyo_enter()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  if executable('tmux') && strlen($TMUX)
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
+  call SetColorScheme()
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Function to check for visual block
 function CheckMode()
@@ -204,8 +233,8 @@ set statusline+=\ %f " Filepath relative to current directory
 set statusline+=%{Readonly()}  " Is this file read only
 set statusline+=%=  "  Everything after this is now on the right side
 set statusline+=%y\ /\  " Adds the file type and a slash
-set statusline+=%{&fileencoding?&fileencoding:&encoding}\
-set statusline+=\ %l/%L\:\%c\  " Adds current line over total number of lines with the column number
+set statusline+=%{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ \ %l/%L\:\%c\  " Adds current line over total number of lines with the column number
 set statusline+=\ %p%%\   " Adds the percentage through the document
 
 " --- Shortcuts & Key Mappings ---
@@ -348,6 +377,9 @@ nnoremap <leader>tn :lua grep_notes()<CR>
 " Fugitive keymaps
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gl :GcLog<CR>
+
+" Goyo keymaps
+nnoremap <leader>go :Goyo<CR>
 
 " --- Macros ---
 let @o = 'o{}0k' " Curly brackets on the same column
