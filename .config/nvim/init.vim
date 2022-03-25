@@ -20,6 +20,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'lervag/vimtex'
 " --- Games ---
 Plug 'theprimeagen/vim-be-good'
 Plug 'seandewar/nvimesweeper'
@@ -141,6 +142,7 @@ function! s:goyo_enter()
     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   endif
   Limelight
+  match Over80col /\%80v.\+/
 endfunction
 
 function! s:goyo_leave()
@@ -150,10 +152,18 @@ function! s:goyo_leave()
   endif
   call SetColorScheme()
   Limelight!
+  match
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" --- vimtex config ---
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=2
+let g:tex_conceal='abdmg'
 
 " --- Color scheme 1 ---
 set background=dark
