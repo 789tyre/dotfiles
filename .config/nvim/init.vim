@@ -17,9 +17,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" Plug 'hrsh7th/nvim-cmp'
+" Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'lervag/vimtex'
 " --- Games ---
 Plug 'theprimeagen/vim-be-good'
@@ -69,7 +69,8 @@ require'nvim-treesitter.configs'.setup {
 	"python",
 	"java",
 	"fish",
-	"haskell"
+	"haskell",
+	"lua"
     },
 
     highlight = {
@@ -80,42 +81,42 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " --- Autocomplete ---
-lua << EOF
-local cmp = require'cmp'
+" lua << EOF
+" local cmp = require'cmp'
 
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c'}),
-    ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    ['<tab>'] = cmp.mapping.confirm({ select = true }),
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp', max_item_count = 5 },
-    { name = 'ultisnips' },
-  }, {
-    { name = 'buffer' },
-  }),
-})
-EOF
+" cmp.setup({
+"   snippet = {
+"     expand = function(args)
+"       vim.fn["UltiSnips#Anon"](args.body)
+"     end,
+"   },
+"   mapping = {
+"     ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+"     ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+"     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c'}),
+"     ['<C-y>'] = cmp.config.disable,
+"     ['<C-e>'] = cmp.mapping({
+"       i = cmp.mapping.abort(),
+"       c = cmp.mapping.close(),
+"     }),
+"     ['<tab>'] = cmp.mapping.confirm({ select = true }),
+"   },
+"   sources = cmp.config.sources({
+"     { name = 'nvim_lsp', max_item_count = 5 },
+"     { name = 'ultisnips' },
+"   }, {
+"     { name = 'buffer' },
+"   }),
+" })
+" EOF
 
 " --- LSP Config ---
-lua << EOF
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require'lspconfig'['clangd'].setup {
-  capabilities = capabilities
-}
-EOF
+" lua << EOF
+" local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+" require'lspconfig'['clangd'].setup {
+"   capabilities = capabilities
+" }
+" EOF
 
 " --- Telescope config ---
 lua << EOF
@@ -130,6 +131,8 @@ end
 EOF
 
 lua require('telescope')
+
+" lua require('lua_config.init.lua')
 
 " --- Limelight config ---
 let g:limelight_conceal_ctermfg = 'darkgray'
@@ -341,7 +344,7 @@ nnoremap <F3> <ESC>:q<CR>
 nnoremap <leader>quit <ESC>:q!<CR>
 
 " Ctrl + F6 to highlight trailing whitespace
-nnoremap <leader>hi <ESC>/\s\+$/<CR>
+nnoremap <leader>ii <ESC>/\s\+$/<CR>
 
 " Ctrl + F8 and Ctrl + F7 to navigate tabs
 nnoremap <F7> <ESC>:tabp<CR>
