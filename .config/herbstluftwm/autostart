@@ -39,10 +39,10 @@ hc keybind $Mod-n spawn $Term -g 133x33 -t Notes -e $HOME/Documents/notes/noteta
 
 # Volume controls
 # Computer volume
-hc keybind $Mod-F1 spawn amixer set Master toggle
-hc keybind $Mod-F2 spawn amixer set Master $volumeStep%- unmute
-hc keybind $Mod-F3 spawn amixer set Master $volumeStep%+ unmute
-hc keybind $Mod-F4 spawn amixer set Capture toggle
+hc keybind $Mod-F1 spawn amixer -c 0 set Master toggle
+hc keybind $Mod-F2 spawn amixer -c 0 set Master $volumeStep%- unmute
+hc keybind $Mod-F3 spawn amixer -c 0 set Master $volumeStep%+ unmute
+hc keybind $Mod-F4 spawn amixer -c 0 set Capture toggle
 # cmus volume
 hc keybind $Mod-Shift-F2 spawn cmus-remote -v -$volumeStep%
 hc keybind $Mod-Shift-F3 spawn cmus-remote -v +$volumeStep%
