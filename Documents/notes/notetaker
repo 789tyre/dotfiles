@@ -7,6 +7,6 @@ if [ ! -f $noteFilename ]; then
   touch $noteFilename
 fi
 
-nvim -c "norm Go" \
+nvim -c "norm G" \
   -c "norm zz" \
-  -c "startinsert" $noteFilename
+  $noteFilename
