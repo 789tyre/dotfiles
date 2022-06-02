@@ -76,7 +76,7 @@ hc keybind $Mod-Shift-k split top    0.5
 hc keybind $Mod-Shift-l split right  0.5
 
 # let the current frame explode into subframes
-hc keybind $Mod-Control-space split explode
+# hc keybind $Mod-Control-space split explode
 
 # resizing frames and floating clients
 hc keybind $Mod-Control-h       resize left +$resizeStep
@@ -85,9 +85,12 @@ hc keybind $Mod-Control-k       resize up +$resizeStep
 hc keybind $Mod-Control-l       resize right +$resizeStep
 
 # Increase or decrease frame gap
-hc keybind $Mod-equal spawn $HOME/.config/herbstluftwm/frameGaps.sh $gapStep
-hc keybind $Mod-minus spawn $HOME/.config/herbstluftwm/frameGaps.sh -$gapStep
-hc keybind $Mod-0 set frame_gap 0
+# hc keybind $Mod-equal spawn $HOME/.config/herbstluftwm/frameGaps.sh $gapStep
+# hc keybind $Mod-minus spawn $HOME/.config/herbstluftwm/frameGaps.sh -$gapStep
+# hc keybind $Mod-0 set frame_gap 0
+
+# Change keyboard layout
+hc keybind $Mod-0 spawn $HOME/.config/herbstluftwm/keys.sh
 
 # tags
 tag_names=( {1..9} )
@@ -121,7 +124,7 @@ hc keybind $Mod-space                                                           
                      . cycle_layout +1 vertical horizontal max vertical grid    \
                , cycle_layout +1
 
-hc keybind $Mod-equal mirror both
+# hc keybind $Mod-equal mirror both
 
 # mouse
 hc mouseunbind --all
@@ -133,7 +136,6 @@ hc mousebind $Mod-Button3 resize
 hc keybind $Mod-backslash   cycle_monitor
 hc keybind $Mod-Tab         cycle +1
 hc keybind $Mod-Shift-Tab   cycle -1
-hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
 # theme

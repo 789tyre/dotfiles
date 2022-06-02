@@ -19,12 +19,10 @@ get_cmus() {
   echo -n "^ca(1, cmus-remote -u)"
   case $cmusstatus in
     "playing")
-      # maybe change this to an xbm?
       # echo -n " ►"
       echo -n "^i($bitmaps/play.xbm)"
       ;;
     "paused")
-      # maybe change this to an xbm?
       # echo -n "▐▐"
       echo -n "^i($bitmaps/pause.xbm)"
       ;;
@@ -61,6 +59,11 @@ get_mem() {
 get_batt() {
   percentage=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/percentage:/ {print $2}')
   echo -n "Bat: $percentage"
+}
+
+get_key() {
+  key=$(setxkbmap -query | awk '/layout:/ {print substr($2, 1, 2)}')
+  echo -n "Key: $key"
 }
 
 # Variables
@@ -136,7 +139,7 @@ hc pad $monitor $panel_height
 
     # update right side
     # echo -n "^p(_RIGHT)"
-    right="$(get_batt) $(get_mem)"
+    right="$(get_key) $(get_batt) $(get_mem)"
     right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
     width_right=$(textwidth "$font" "$right_text_only")
     # echo -n "^p(-$((width_right + 16)))$right"
