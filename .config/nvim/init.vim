@@ -13,8 +13,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'jbyuki/venn.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Plug 'hrsh7th/nvim-cmp'
@@ -343,7 +341,7 @@ nnoremap <F3> <ESC>:q<CR>
 " Type "quit" to quit without saving
 nnoremap <leader>quit <ESC>:q!<CR>
 
-" Ctrl + F6 to highlight trailing whitespace
+" <leader>ii to highlight trailing whitespace
 nnoremap <leader>ii <ESC>/\s\+$/<CR>
 
 " Ctrl + F8 and Ctrl + F7 to navigate tabs
@@ -391,9 +389,6 @@ nnoremap <leader>tn :lua grep_notes()<CR>
 " Fugitive keymaps
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>gl :GcLog<CR>
-
-" Goyo keymaps
-nnoremap <leader>go :Goyo<CR>
 
 " --- Macros ---
 let @o = 'o{}0k' " Curly brackets on the same column
