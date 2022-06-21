@@ -197,20 +197,20 @@ set background=dark
 
 " --- Color Scheme 2 ---
 function! SetColorScheme()
-  hi Comment      ctermfg = 47
-  hi Special      ctermfg = 87
-  hi PrePoc       ctermfg = 75
-  hi Identifier   ctermfg = 112    cterm = NONE
-  hi Constant     ctermfg = 43
-  hi ErrorMsg     ctermfg = white  ctermbg = red
-  hi Error        ctermfg = white  ctermbg = 124
-  hi Todo         ctermfg = black  ctermbg = 76
-  " hi Normal       ctermfg = 15     ctermbg = 234
-  hi Normal       ctermfg = 07
-  hi Search       ctermfg = 22     ctermbg = 117
-  hi Statement    ctermfg = 75
-  hi colorcolumn  ctermfg = white ctermbg = 4
-  hi LineNr       ctermfg = 10
+  hi Comment      ctermfg = 47                     guifg = #00ff5f
+  hi Special      ctermfg = 87                     guifg = #5fffff
+  hi PrePoc       ctermfg = 75                     guifg = #5fafff
+  hi Identifier   ctermfg = 112    cterm = NONE    guifg = #87d700
+  hi Constant     ctermfg = 43                     guifg = #00d7af
+  hi ErrorMsg     ctermfg = white  ctermbg = red   guifg = #ffffff   guibg = #ff0037
+  hi Error        ctermfg = white  ctermbg = 124   guifg = #ffffff   guibg = #af0000
+  hi Todo         ctermfg = black  ctermbg = 76    guifg = #000000   guibg = #5fd700
+  " hi Normal       ctermfg = 15     ctermbg = 234   guifg = white
+  hi Normal       ctermfg = 07                     guifg = #e5e5e5   guibg = #e7e7e7
+  hi Search       ctermfg = 22     ctermbg = 117   guifg = #005f00   guibg = #87d7ff
+  hi Statement    ctermfg = 75                     guifg = #5fafff
+  hi colorcolumn  ctermfg = white ctermbg = 4      guifg = #000000   guibg = #4683bf
+  hi LineNr       ctermfg = 10                     guifg = #00ff5f
 
   hi User1        ctermfg = 15     ctermbg = 68
   hi User2        ctermfg = 15     ctermbg = 67
