@@ -348,8 +348,6 @@ split: _?  rename buffer: r  delete window: d  quit: q
 
 (use-package magit)
 
-;; (use-package vterm)
-
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
@@ -416,26 +414,6 @@ split: _?  rename buffer: r  delete window: d  quit: q
 (use-package dired-quick-sort
   :bind (("C-s" . 'hydra-dired-quick-sort/body)))
 
-(use-package emms
-  :config
-  (emms-all)
-  (setq  emms-player-list '(emms-player-vlc
-                            emms-player-mplayer
-                            emms-player-mpg321
-                            emms-player-ogg123))
-  (setq emms-volume-change-amount 2)
-  (setq emms-volume-mode-timeout 5)
-  (setq emms-source-file-default-directory "~/Music/"))
-
-(thingy/leader-keys
-  "e;" '(emms-start :which-key "Start")
-  "ep" '(emms-pause :which-key "Pause")
-  "eq" '(emms-stop :which-key "Stop")
-  "e." '(emms-next :which-key "Next")
-  "ej" '(emms-previous :which-key "Prev")
-  "ek" '(emms-show :which-key "Show")
-  "e+" '(emms-volume-mode-plus :which-key "Vol+")
-  "e-" '(emms-volume-mode-minus :which-key "Vol-"))
 
 ;; --- Key Bindings ---
 (global-set-key (kbd "<f2>") 'save-buffer)
