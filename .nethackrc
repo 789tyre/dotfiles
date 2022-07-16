@@ -1,7 +1,7 @@
 OPTIONS=name:Gavin
 OPTIONS=hilite_pet
 OPTIONS=pettype:cat, catname:Clanthony
-OPTIONS=showexp, time, color
+OPTIONS=showexp, time, color, popup_dialog
 OPTIONS=!bones
 
 # Only pickup money
@@ -13,8 +13,7 @@ AUTOPICKUP_EXCEPTION:"<.* named ammo"
 SYMBOLS=S_corr:#
 SYMBOLS=S_boulder:0
 
-OPTIONS=windowtype:curses
-# OPTIONS=perm_invent
+OPTIONS=windowtype:tty
 
 OPTIONS=statushilites
 
