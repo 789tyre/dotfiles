@@ -13,7 +13,7 @@ AUTOPICKUP_EXCEPTION:"<.* named ammo"
 SYMBOLS=S_corr:#
 SYMBOLS=S_boulder:0
 
-OPTIONS=windowtype:tty
+OPTIONS=windowtype:curses
 
 OPTIONS=statushilites
 
@@ -58,8 +58,8 @@ MENUCOLOR=" cursed .* tethered"=orange&underline
 
 # HP
 OPTIONS=hitpointbar
-OPTIONS=hilite_status:hitpoints/100%/green&normal
-OPTIONS=hilite_status:hitpoints/<100%/lightgreen&normal
+OPTIONS=hilite_status:hitpoints/100%/lightgreen&normal
+OPTIONS=hilite_status:hitpoints/<100%/green&normal
 OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
 OPTIONS=hilite_status:hitpoints/<50%/orange&normal
 OPTIONS=hilite_status:hitpoints/<33%/red&normal
@@ -100,19 +100,4 @@ MENUCOLOR=" cursed " = red
 MENUCOLOR=" unholy " = red
 MENUCOLOR=" cursed .* (being worn)" = orange&underline
 
-# Messages to hide
-MSGTYPE=hide "You swap places with .*"
-
-# Here are some classes to quick start the game
-CHOOSE=rogue
-[knight]
-OPTIONS=role:knight, race:*, align:*, gender:*
-[rogue]
 OPTIONS=role:rogue, race:human, align:*, gender:*
-[ranger]
-OPTIONS=role:ranger, race:*, align:*, gender:*
-[valkyrie]
-OPTIONS=role:valkyrie, race:dwarf, align:l, gender:*
-[wild]
-OPTIONS=role:*, race:*, align:*, gender:*
-[free]
