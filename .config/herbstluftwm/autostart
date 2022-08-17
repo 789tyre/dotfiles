@@ -8,12 +8,6 @@ hc() {
 
 hc emit_hook reload
 
-# --- Auto start ---
-xsetroot -solid '#5A8E3A'
-lxsession &
-nitrogen --restore &
-picom &
-
 # remove all existing keybindings
 hc keyunbind --all
 
@@ -28,6 +22,16 @@ resizeStep=0.02
 volumeStep=2
 brightnessStep=5
 gapStep=2
+
+# --- Auto start ---
+xsetroot -solid '#5A8E3A'
+nitrogen --restore &
+picom &
+
+if !( tmux ls 2> /dev/null | grep -q personal ) then
+    $Term -e $HOME/.start &
+fi
+
 
 # --- Keybindings ---
 hc keybind $Mod-Shift-q quit

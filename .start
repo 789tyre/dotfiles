@@ -1,0 +1,33 @@
+#!/bin/fish
+
+# Setup tmux
+set session personal
+set sessionExists (tmux list-sessions | grep $session)
+
+
+if [ "$sessionExists" = "" ]
+  tmux new -ds $session
+  tmux renamew -t $session "hub"
+
+  # setup window 0
+  # setup layout
+  tmux splitw -t $session -v
+  tmux swap-pane -t $session -D
+  tmux splitw -t $session -h
+
+  # setup programs
+  tmux send -t $session:0.0 "alsamixer" C-m
+  tmux clock-mode -t $session:0.1
+  tmux send -t $session:0.2 "cmus" C-m
+
+  tmux select-pane -t $session:0 -L
+  tmux select-pane -t $session:0 -D
+
+  # setup window 1
+  tmux neww -t $session
+
+  tmux selectw -t $session -n
+end
+
+# attach session
+tmux a -t $session
