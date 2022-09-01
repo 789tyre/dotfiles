@@ -132,33 +132,6 @@ lua require('telescope')
 
 " lua require('lua_config.init.lua')
 
-" --- Limelight config ---
-let g:limelight_conceal_ctermfg = 'darkgray'
-let g:limelight_conceal_ctermbg = 240
-
-" --- Goyo config ---
-function! s:goyo_enter()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status off
-    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  endif
-  Limelight
-  match Over80col /\%80v.\+/
-endfunction
-
-function! s:goyo_leave()
-  if executable('tmux') && strlen($TMUX)
-    silent !tmux set status on
-    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  endif
-  call SetColorScheme()
-  Limelight!
-  match
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
 " --- vimtex config ---
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
