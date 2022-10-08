@@ -59,24 +59,24 @@ function! Readonly()
 endfunction
 
 " --- Treesitter Config ---
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-	"c",
-	"cpp",
-	"python",
-	"java",
-	"fish",
-	"haskell",
-	"lua"
-    },
+"lua << EOF
+"require'nvim-treesitter.configs'.setup {
+"    ensure_installed = {
+"	"c",
+"	"cpp",
+"	"python",
+"	"java",
+"	"fish",
+"	"haskell",
+"	"lua"
+"    },
 
-    highlight = {
-	enable = true,
-        disable = {}
-    },
-}
-EOF
+"    highlight = {
+"	enable = true,
+"        disable = {}
+"    },
+"}
+"EOF
 
 " --- Autocomplete ---
 " lua << EOF
